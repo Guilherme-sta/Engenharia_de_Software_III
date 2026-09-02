@@ -1,6 +1,9 @@
-fastapi>=0.110
-pydantic>=2.0
+# Dependências mínimas para a suíte isolada (isolated/)
 pytest>=8.0
 pytest-cov>=5.0
 coverage>=7.0
 radon>=6.0
+
+# fastapi e pydantic NÃO são necessários para esta suíte.
+# Só seriam usados pela suíte alternativa em tests/ (que testa contra
+# o projeto completo) — não coberta por este README.
