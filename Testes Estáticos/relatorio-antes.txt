@@ -1,0 +1,34 @@
+F401 [*] `fastapi.status` imported but unused
+ --> app/routers/reserva_router.py:1:56
+  |
+1 | from fastapi import APIRouter, Depends, HTTPException, status
+  |                                                        ^^^^^^
+2 | from app.services.reserva_service import ReservaService
+3 | from app.repositories.reserva_repo import ReservaRepository
+  |
+help: Remove unused import: `fastapi.status`
+  |
+  - from fastapi import APIRouter, Depends, HTTPException, status
+1 + from fastapi import APIRouter, Depends, HTTPException
+2 | from app.services.reserva_service import ReservaService
+  |
+
+F401 [*] `datetime.date` imported but unused
+ --> app/schemas/reserva_schema.py:4:22
+  |
+2 | from pydantic import model_validator
+3 | from datetime import datetime
+4 | from datetime import date
+  |                      ^^^^
+5 | from typing import Optional
+6 | from app.models.reserva import StatusReserva
+  |
+help: Remove unused import: `datetime.date`
+  |
+3 | from datetime import datetime
+  - from datetime import date
+4 | from typing import Optional
+  |
+
+Found 2 errors.
+[*] 2 fixable with the `--fix` option.
