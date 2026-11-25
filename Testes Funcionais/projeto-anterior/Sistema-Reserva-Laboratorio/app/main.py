@@ -1,4 +1,7 @@
+from pathlib import Path
+
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from app.routers import laboratorios
 from app.routers import reserva_router
 
@@ -10,6 +13,11 @@ app = FastAPI(
 
 app.include_router(laboratorios.router)
 app.include_router(reserva_router.router)
+app.mount(
+    '/web',
+    StaticFiles(directory=Path(__file__).resolve().parents[1] / 'web', html=True),
+    name='web',
+)
 
 @app.get('/')
 def root():

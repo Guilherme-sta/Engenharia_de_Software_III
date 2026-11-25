@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sistema de Reserva de Laboratórios</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container">
+            <h1>Sistema de Reserva de Laboratórios</h1>
+            <nav aria-label="Seções">
+                <a href="#laboratorios">Laboratórios</a>
+                <a href="#reservas">Reservas</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <section id="laboratorios" aria-labelledby="titulo-laboratorios">
+            <h2 id="titulo-laboratorios">Laboratórios</h2>
+            <div class="grid">
+                <form data-testid="laboratorio-cadastro">
+                    <h3>Cadastrar laboratório</h3>
+                    <label for="laboratorio-nome">Nome</label>
+                    <input id="laboratorio-nome" name="nome" required minlength="2" data-testid="laboratorio-nome">
+                    <label for="laboratorio-capacidade">Capacidade</label>
+                    <input id="laboratorio-capacidade" name="capacidade" type="number" min="1" step="1" required data-testid="laboratorio-capacidade">
+                    <button type="submit" data-testid="laboratorio-cadastrar">Cadastrar</button>
+                </form>
+                <form data-testid="laboratorio-consulta">
+                    <h3>Consultar laboratório</h3>
+                    <label for="laboratorio-id">ID do laboratório</label>
+                    <input id="laboratorio-id" name="id" required data-testid="laboratorio-id">
+                    <button type="submit" data-testid="laboratorio-consultar">Consultar</button>
+                </form>
+            </div>
+            <p class="feedback" data-testid="laboratorio-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+            <dl class="resultado" data-testid="laboratorio-resultado" hidden></dl>
+        </section>
+        <section id="reservas" aria-labelledby="titulo-reservas">
+            <h2 id="titulo-reservas">Reservas</h2>
+            <div class="grid">
+                <form data-testid="reserva-solicitacao">
+                    <h3>Solicitar reserva</h3>
+                    <label for="reserva-laboratorio-id">ID do laboratório</label>
+                    <input id="reserva-laboratorio-id" name="laboratorio_id" required data-testid="reserva-laboratorio-id">
+                    <label for="reserva-solicitante">Solicitante</label>
+                    <input id="reserva-solicitante" name="solicitante" minlength="2" required data-testid="reserva-solicitante">
+                    <label for="reserva-data">Data</label>
+                    <input id="reserva-data" name="data" type="date" required data-testid="reserva-data">
+                    <div class="horarios">
+                        <div>
+                            <label for="reserva-inicio">Hora inicial</label>
+                            <input id="reserva-inicio" name="hora_inicio" type="time" required data-testid="reserva-inicio">
+                        </div>
+                        <div>
+                            <label for="reserva-fim">Hora final</label>
+                            <input id="reserva-fim" name="hora_fim" type="time" required data-testid="reserva-fim">
+                        </div>
+                    </div>
+                    <button type="submit" data-testid="reserva-solicitar">Solicitar</button>
+                </form>
+                <form data-testid="reserva-consulta">
+                    <h3>Consultar reserva</h3>
+                    <label for="reserva-id">ID da reserva</label>
+                    <input id="reserva-id" name="id" required data-testid="reserva-id">
+                    <button type="submit" data-testid="reserva-consultar">Consultar</button>
+                </form>
+            </div>
+            <p class="feedback" data-testid="reserva-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+            <div class="detalhes" data-testid="reserva-detalhes" hidden>
+                <h3>Detalhes da reserva</h3>
+                <dl class="resultado" data-testid="reserva-resultado"></dl>
+                <div class="acoes" data-testid="reserva-acoes" hidden>
+                    <form data-testid="reserva-aprovacao" hidden>
+                        <button type="submit" data-testid="reserva-aprovar">Aprovar reserva</button>
+                    </form>
+                    <form data-testid="reserva-cancelamento">
+                        <label for="cancelamento-solicitante">Solicitante do cancelamento</label>
+                        <input id="cancelamento-solicitante" name="solicitante" required data-testid="cancelamento-solicitante">
+                        <button type="submit" class="secundario" data-testid="reserva-cancelar">Cancelar reserva</button>
+                    </form>
+                </div>
+                <p class="feedback" data-testid="reserva-acao-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
