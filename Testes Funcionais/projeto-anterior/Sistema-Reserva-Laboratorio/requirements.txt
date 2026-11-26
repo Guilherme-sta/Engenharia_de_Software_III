@@ -1,0 +1,9 @@
+# Ambiente enxuto para o escopo de testes de ES III
+# Validar com Python 3.11+; versoes sao faixas, nao ambiente homologado.
+fastapi>=0.110,<1
+pydantic>=2,<3
+uvicorn>=0.30,<1
+httpx>=0.27,<1
+pytest>=8,<10
+pytest-html>=4,<5
+selenium>=4.20,<5
